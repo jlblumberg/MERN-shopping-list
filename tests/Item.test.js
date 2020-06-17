@@ -1,8 +1,17 @@
 const mongoose = require('mongoose');
+const config = require('../config/config');
 const expect = require('chai').expect;
-const Item = require('../models/Item').Item;
+const Item = require('../models/Item');
 
 describe('Items', () => {
+
+  beforeEach((done) => {
+    mongoose.connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+      mongoose.connection.db.dropDatabase(() => {
+        done();
+      })
+    })
+  })
 
   it('can be saved to the test database', () => {
     const testItem = Item({
@@ -33,7 +42,7 @@ describe('Items', () => {
     try {
       await testItem.save();
     } catch (err) {
-      expect(err._message).to.equal('item validation failed')
+      expect(err._message).to.equal('item validation failed');
     }
   });
   

@@ -22,6 +22,17 @@ describe('Items', () => {
     try {
       await testItem.save();
     } catch (err) {
+      expect(err._message).to.equal('item validation failed');
+    }
+  });
+
+  it('doesn\'t save a user to the database if the required field is missing', async () => {
+    const testItem = Item({
+      date: Date.now 
+    })
+    try {
+      await testItem.save();
+    } catch (err) {
       expect(err._message).to.equal('item validation failed')
     }
   });

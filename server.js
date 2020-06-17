@@ -18,5 +18,5 @@ mongoose.connect(config.mongoURI, { useNewUrlParser: true, useUnifiedTopology: t
 
 const listen = app.listen(config.port, () => console.log(`Server started on port ${config.port}`));
 
+app.port = listen.address().port;
 module.exports = app;
-module.exports.port = listen.address().port;

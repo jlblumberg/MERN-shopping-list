@@ -15,9 +15,20 @@ describe('Express API', () => {
   })
 
   it('gets all list items', async () => {
-    const response = await request(server).get('/api/items');
+    const response = await request(server)
+      .get('/api/items');
     expect(response.status).to.equal(200);
     expect(response.body).to.deep.equal([]);
+  });
+
+  it('can post a new item', async () => {
+    let data = { name: "Milk" }
+    const response = await request(server)
+      .post('/api/items')
+      .send(data)
+      .set('Accept', 'application/json');
+    expect(response.status).to.equal(200);
+    expect(response.body.name).to.equal("Milk");
   });
 
 });

@@ -37,6 +37,7 @@ const ShoppingList = () => {
               <ListGroupItem id='shopping-list-item'>
                 <Button
                   id='remove-item'
+                  style={{ marginRight: '0.5rem' }}
                   className='remove-btn'
                   color='danger'
                   size='sm'

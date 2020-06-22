@@ -14,7 +14,7 @@ const ShoppingList = () => {
     ]
   })
 
-  const handleClick = () => {
+  const handleAddClick = () => {
     const name = prompt('Enter item');
     if (name) {
       setListItems({ items: [...listItems.items, { id: uuidv4(), name: name }] })
@@ -27,9 +27,31 @@ const ShoppingList = () => {
         id='add-item'
         color='dark'
         style={{ marginBottom: '2rem' }}
-        onClick={handleClick}
+        onClick={handleAddClick}
       >Add item
       </Button>
+      <ListGroup>
+        <TransitionGroup className='shopping-list' id='shopping-list'>
+          {listItems.items.map(({ id, name }) => (
+            <CSSTransition key={id} timeout={500} classNames='fade'>
+              <ListGroupItem id='shopping-list-item'>
+                <Button
+                  id='remove-item'
+                  className='remove-btn'
+                  color='danger'
+                  size='sm'
+                  onClick={() => {
+                    setListItems({ items: listItems.items.filter(item => item.id !== id) })
+                  }}
+                >
+                  &times;
+                </Button>
+                {name}
+              </ListGroupItem>
+            </CSSTransition>
+          ))}
+        </TransitionGroup>
+      </ListGroup>
     </Container>
   )
 

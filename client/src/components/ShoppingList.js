@@ -17,7 +17,7 @@ const ShoppingList = () => {
   const handleAddClick = () => {
     const name = prompt('Enter item');
     if (name) {
-      setListItems({ items: [...listItems.items, { id: uuidv4(), name: name }] })
+      setListItems({ items: [...listItems.items, { id: uuidv4(), name: name }] });
     }
   }
 
@@ -42,7 +42,7 @@ const ShoppingList = () => {
                   color='danger'
                   size='sm'
                   onClick={() => {
-                    setListItems({ items: listItems.items.filter(item => item.id !== id) })
+                    setListItems({ items: listItems.items.filter(item => item.id !== id) });
                   }}
                 >
                   &times;

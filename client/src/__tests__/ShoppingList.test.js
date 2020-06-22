@@ -14,8 +14,8 @@ describe('ShoppingList', () => {
   });
 
   it('displays the items in a list', () => {
-    expect(wrapper.find('#shopping-list').exists()).toBe(true)
-    expect(wrapper.find('#shopping-list-item').exists()).toBe(true)
+    expect(wrapper.find('#shopping-list').exists()).toBe(true);
+    expect(wrapper.find('#shopping-list-item').exists()).toBe(true);
   });
 
   it('has a button for deleting items', () => {

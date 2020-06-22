@@ -14,10 +14,10 @@ const ShoppingList = () => {
     ]
   })
 
-  const onClick = () => {
+  const handleClick = () => {
     const name = prompt('Enter item');
     if (name) {
-      setListItems({ items: [...items, { id: uuidv4(), name: name }] })
+      setListItems({ items: [...listItems.items, { id: uuidv4(), name: name }] })
     }
   }
 
@@ -27,7 +27,7 @@ const ShoppingList = () => {
         id='add-item'
         color='dark'
         style={{ marginBottom: '2rem' }}
-        onClick={onClick}
+        onClick={handleClick}
       >Add item
       </Button>
     </Container>
